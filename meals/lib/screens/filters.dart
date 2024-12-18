@@ -24,7 +24,7 @@ class _filterScreenState extends ConsumerState<filtersScreen> {
   @override
   void initState() {
     super.initState();
-    final activeFilters = ref.read(filtersProvider);
+    final activeFilters = ref.watch(filtersProvider);
     glutenFreeCheck = activeFilters[Filters.glutenFree]!;
     lactoseFreeCheck = activeFilters[Filters.lactoseFree]!;
     vegetarianCheck = activeFilters[Filters.vegetarian]!;
@@ -63,6 +63,9 @@ class _filterScreenState extends ConsumerState<filtersScreen> {
               onChanged: (isChecked) {
                 setState(() {
                   glutenFreeCheck = isChecked;
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(Filters.glutenFree, isChecked);
                 });
               },
               title: Text(
@@ -83,6 +86,9 @@ class _filterScreenState extends ConsumerState<filtersScreen> {
               onChanged: (isChecked) {
                 setState(() {
                   lactoseFreeCheck = isChecked;
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(Filters.lactoseFree, isChecked);
                 });
               },
               title: Text(
@@ -103,6 +109,9 @@ class _filterScreenState extends ConsumerState<filtersScreen> {
               onChanged: (isChecked) {
                 setState(() {
                   vegetarianCheck = isChecked;
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(Filters.vegetarian, isChecked);
                 });
               },
               title: Text(
@@ -123,6 +132,9 @@ class _filterScreenState extends ConsumerState<filtersScreen> {
               onChanged: (isChecked) {
                 setState(() {
                   vaeganCheck = isChecked;
+                  ref
+                      .read(filtersProvider.notifier)
+                      .setFilter(Filters.vegan, isChecked);
                 });
               },
               title: Text(

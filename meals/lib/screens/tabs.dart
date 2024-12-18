@@ -11,15 +11,15 @@ import 'package:meals/models/meal.dart';
 import 'package:meals/providers/meals_provider.dart';
 import 'package:meals/screens/filters.dart';
 
-enum Filters { glutenFree, lactoseFree, vegetarian, vegan }
-
+//enum Filters { glutenFree, lactoseFree, vegetarian, vegan }
+/*
 const kInitialfilters = {
   Filters.glutenFree: false,
   Filters.lactoseFree: false,
   Filters.vegan: false,
   Filters.vegetarian: false
 };
-
+*/
 class tabsScreen extends ConsumerStatefulWidget {
   const tabsScreen({super.key});
   @override
@@ -31,7 +31,7 @@ class tabsScreen extends ConsumerStatefulWidget {
 class _TabsScreenState extends ConsumerState<tabsScreen> {
   int _selectedPageIndex = 0;
   // final List<Meal> favouriteMeals = [];
-  Map<Filters, bool> _selectedFilters = kInitialfilters;
+  // Map<Filters, bool> _selectedFilters = kInitialfilters;
   /*
   void ToggleFavouriteMeals(Meal meal) {
     final isExisting = favouriteMeals.contains(meal);
