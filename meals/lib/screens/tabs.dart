@@ -57,8 +57,6 @@ class _TabsScreenState extends ConsumerState<tabsScreen> {
     if (identifier == 'filters') {
       await Navigator.of(context).push<Map<Filters, bool>>(
           MaterialPageRoute(builder: (ctx) => const filtersScreen()));
-
-      setState(() {});
     }
   }
 
@@ -66,21 +64,7 @@ class _TabsScreenState extends ConsumerState<tabsScreen> {
   Widget build(BuildContext context) {
     final meals = ref.watch(mealsProvider);
     final activeFilters = ref.watch(filtersProvider);
-    final availableMeals = meals.where((Meal) {
-      if (activeFilters[Filters.glutenFree]! && !Meal.isGlutenFree) {
-        return false;
-      }
-      if (activeFilters[Filters.lactoseFree]! && !Meal.isLactoseFree) {
-        return false;
-      }
-      if (activeFilters[Filters.vegan]! && !Meal.isVegan) {
-        return false;
-      }
-      if (activeFilters[Filters.vegetarian]! && !Meal.isVegetarian) {
-        return false;
-      }
-      return true;
-    }).toList();
+    final availableMeals = ref.watch(filteredMealsProvider);
 
     Widget activePage = categoriesScreen(
       availableMeals: availableMeals,
