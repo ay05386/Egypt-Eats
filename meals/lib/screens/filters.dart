@@ -24,11 +24,21 @@ class _filterScreenState extends ConsumerState<filtersScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final activeFilters = ref.read(filtersProvider);
+      setState(() {
+        glutenFreeCheck = activeFilters[Filters.glutenFree] ?? false;
+        lactoseFreeCheck = activeFilters[Filters.lactoseFree] ?? false;
+        vegetarianCheck = activeFilters[Filters.vegetarian] ?? false;
+        vaeganCheck = activeFilters[Filters.vegan] ?? false;
+      });
+    });
+    /*
     final activeFilters = ref.watch(filtersProvider);
     glutenFreeCheck = activeFilters[Filters.glutenFree]!;
     lactoseFreeCheck = activeFilters[Filters.lactoseFree]!;
     vegetarianCheck = activeFilters[Filters.vegetarian]!;
-    vaeganCheck = activeFilters[Filters.vegan]!;
+    vaeganCheck = activeFilters[Filters.vegan]!;*/
   }
 
   @override
